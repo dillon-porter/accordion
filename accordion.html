@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Accordion FAQ</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <style>
+    body, .jumbotron { padding: 30px; }
+    html      {
+      overflow-y: scroll;
+    }
+    body      {
+      background: #EFEFEF;
+    }
+    h3 {
+        color:#C00C00;
+        text-align: center;
+    }
+    ul        {
+      margin-bottom: 0;
+    }
+    .accordion  {
+      background: #FFF;
+      border-radius: 5px;
+      padding: 30px;
+    }
+
+    .question {
+      border-top: 1px solid #EEE;
+      padding: 20px;
+      cursor: pointer;
+      position: relative;
+    }
+    .question h2  {
+      font-size: 20px;
+      margin: 0;
+      color: #C00C00;
+    }
+    .question .glyphicon {
+      position: absolute;
+      right: 20px;
+      top: 0;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      color: #C00C00;
+      transition: 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) all;
+    }
+
+    .answer   {
+      max-height: 0;
+      overflow: hidden;
+      transition: 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) all;
+    }
+    .answer p {
+      padding: 20px;
+    }
+
+    .accordion li.open .question .glyphicon {
+      transform: rotate(180deg);
+    }
+    .accordion li.open .answer  {
+      max-height: 150px;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="accordion">
+    <ul class="list-unstyled">
+      <li class="">
+        <h3>F.A.Q</h3>
+        <div class="question">
+          <h2>How do I apply?</h2>
+          <span class="glyphicon glyphicon-chevron-down"></span>
+        </div>
+        <div class="answer">
+          <p>First you need to register for apply using our online application service. Once you’ve registered, you’ll be able to complete your application.</p>
+        </div>
+      </li>
+      <li>
+        <div class="question">
+          <h2>What will happen when I’ve sent my application?</h2>
+          <span class="glyphicon glyphicon-chevron-down"></span>
+        </div>
+        <div class="answer">
+          <p>We'll process it and send you a welcome email confirming the application has been sent to your university choices. This email will also contain your Personal ID, which will enable you to sign in to Track to check the progress of your application.</p>
+        </div>
+      </li>
+      <li>
+        <div class="question">
+          <h2>How can I make a change to my application?</h2>
+          <span class="glyphicon glyphicon-chevron-down"></span>
+        </div>
+        <div class="answer">
+          <p>This depends on the type of change you want to make. You can change your address, phone number, and email address on your profile page.</p>
+          <li>
+            <div class="question">
+              <h2>What should I include in my personal statement?</h2>
+              <span class="glyphicon glyphicon-chevron-down"></span>
+            </div>
+            <div class="answer">
+              <p>You can read comprehensive advice and watch a video on writing a personal statement. We have also created a blog post with input from organizations which you may find useful.</p>
+            </div>
+          </li>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+</div>
+
+  <!-- javascript 🔥🔥🔥🔥 -->
+  <script>
+    const accordion = document.querySelector('.accordion');
+    const items     = accordion.querySelectorAll('li');
+    const questions = accordion.querySelectorAll('.question');
+
+    function toggleAccordion() {
+      const thisItem = this.parentNode;
+
+      items.forEach(item => {
+        if (thisItem == item) {
+          thisItem.classList.toggle('open');   
+          return;
+        }
+
+        item.classList.remove('open');
+      });         
+    }
+
+    questions.forEach(question => question.addEventListener('click', toggleAccordion));
+  </script>
+</body>
+</html>
